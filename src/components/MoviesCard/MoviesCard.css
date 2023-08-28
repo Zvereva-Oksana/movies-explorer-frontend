@@ -1,0 +1,143 @@
+.movie {
+    width: 364px;
+    height: 281px;
+    border-radius: 6px;
+    background-color: #222;
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.08);
+}
+
+.movie_hover:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 920px) and (min-width: 400px) {
+    .movie {
+        width: 339px;
+        height: 262px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .movie {
+        width: 300px;
+        height: 237px;
+    }
+}
+
+.movie__thumbnail {
+    width: 364px;
+    height: 203px;
+    object-fit: contain;
+
+}
+
+@media screen and (max-width: 840px) and (min-width: 400px) {
+    .movie__thumbnail {
+        width: 339px;
+        height: 190px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .movie__thumbnail {
+        width: 300px;
+        height: 168px;
+    }
+}
+
+.movie__wrapper {
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -4px 0;
+}
+
+@media screen and (max-width: 840px) {
+    .movie__wrapper {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+}
+
+.movie__name {
+    padding-top: 16px;
+    padding-bottom: 17px;
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 290px;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+@media screen and (max-width: 840px) and (min-width: 350px) {
+    .movie__name {
+        max-width: 260px;
+        padding-top: 14px;
+        padding-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .movie__name {
+        font-size: 12px;
+        max-width: 240px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+}
+
+.movie__button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background-image: url("../../../src/images/icon-not-like.svg");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    box-sizing: border-box;
+    background-color: #222;
+    padding: 0;
+}
+
+.movie__button_active {
+    background-image: url("../../../src/images/icon-like.svg");
+}
+
+.movie__button-delete {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background-image: url("../../../src/images/icon-x.svg");
+    background-repeat: no-repeat;
+    background-size: 7px 7px;
+    background-position: center;
+    box-sizing: border-box;
+    background-color: #222;
+    padding: 0;
+}
+
+.movie__duration {
+    padding-left: 16px;
+    color: #8B8B8B;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width: 840px) {
+    .movie__duration {
+        padding-left: 14px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .movie__duration {
+        font-size: 10px;
+    }
+}
