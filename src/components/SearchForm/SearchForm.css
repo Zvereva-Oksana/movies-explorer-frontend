@@ -17,6 +17,11 @@
     }
 }
 
+.search__wrapper {display: flex;
+    flex-direction: column;
+    height: 87px;
+}
+
 .search__button {
     width: 34px;
     height: 34px;
@@ -74,4 +79,13 @@
     justify-content: space-between;
     overflow: hidden;
     align-items: center;
+}
+
+.search__error-text{
+    color: #FF004C;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
 }

@@ -40,56 +40,75 @@
 }
 
 .portfolio__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
     padding-left: 0;
     list-style-type: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
 }
 
 .portfolio__link-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 19px;
+}
+
+.portfolio__link-wrapper:hover {
+    opacity: 0.7;
+}
+
+.portfolio__link-wrapper_last {
+    margin-bottom: 0;
+}
+
+.portfolio__img-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 29px;
     height: 60px;
-    padding-bottom: 6px;
+    margin-bottom: -10px;
+
 }
 
 @media screen and (max-width: 570px) {
-    .portfolio__link-wrapper {
+    .portfolio__img-wrapper {
         width: 18px;
         height: 28px;
-        padding-bottom: 19px;
+        margin-bottom: 0;
     }
 }
 
-.portfolio__link-wrapper_last {
-    padding-bottom: 0
+.portfolio__img-wrapper_last {
+    margin-bottom: 0
 }
 
-.portfolio__link {
+.portfolio__img {
     width: 18px;
     height: 17px;
-    cursor: pointer;
-    margin-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 @media screen and (max-width: 800px) and (min-width: 570px) {
-    .portfolio__link {
+    .portfolio__img {
         width: 16px;
         height: 15px;
-        margin-bottom: 2px;
+        padding-bottom: 2px;
     }
 }
 
 @media screen and (max-width: 570px) {
-    .portfolio__link {
+    .portfolio__img {
         width: 11px;
         height: 10px;
-        margin-bottom: 2px;
+        padding-bottom: 2px;
     }
-}
-
-.portfolio__link:hover {
-    opacity: 0.7;
 }
 
 .portfolio__website {
@@ -99,8 +118,8 @@
     font-weight: 400;
     line-height: 50px;
     max-width: 880px;
-    padding-bottom: 19px;
-    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 @media screen and (max-width: 800px) and (min-width: 570px) {
@@ -116,30 +135,13 @@
     }
 }
 
-.portfolio__website_last {
-    padding-bottom: 0;
-}
-
 .portfolio__wrapper {
     display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #424242;
-    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 800px){
     .portfolio__wrapper {
         border-bottom: 1px solid #E6E6E6;
     }
-}
-
-@media screen and (max-width: 430px) {
-    .portfolio__wrapper {
-        margin-bottom: 19px;
-    }
-}
-
-.portfolio__wrapper_no-border {
-    border: none;
-    margin-bottom: 0;
 }

@@ -9,29 +9,34 @@ const Portfolio = () => {
             <h2 className="portfolio__header">Портфолио</h2>
             <ul className="portfolio__list">
                 <li className="portfolio__wrapper">
-                    <h3 className="portfolio__website">Статичный сайт</h3>
-                    <div className="portfolio__link-wrapper">
-                        <Link to="https://zvereva-oksana.github.io/how-to-learn/" target="_blank"><img
-                            className="portfolio__link" src={arrow} alt="белая стрелка"/></Link>
-                    </div>
+                    <Link to="https://zvereva-oksana.github.io/how-to-learn/" target="_blank"
+                          className="portfolio__link-wrapper">
+                        <h3 className="portfolio__website">Статичный сайт</h3>
+                        <div className="portfolio__img-wrapper">
+                            <img className="portfolio__img" src={arrow} alt="белая стрелка"/>
+                        </div>
+                    </Link>
                 </li>
                 <li className="portfolio__wrapper">
-                    <h3 className="portfolio__website">Адаптивный сайт</h3>
-                    <div className="portfolio__link-wrapper">
-                        <Link to="https://zvereva-oksana.github.io/russian-travel/" target="_blank"><img
-                            className="portfolio__link" src={arrow} alt="белая стрелка"/></Link>
-                    </div>
-                </li>
-                <li className="portfolio__wrapper portfolio__wrapper_no-border">
-                    <h3 className="portfolio__website portfolio__website_last">Одностраничное приложение</h3>
-                    <div className="portfolio__link-wrapper portfolio__link-wrapper_last">
-                        <Link to="https://zvereva-oksana.github.io/react-mesto-auth/" target="_blank"><img
-                            className="portfolio__link" src={arrow} alt="белая стрелка"/></Link>
-                    </div>
+                    <Link to="https://zvereva-oksana.github.io/russian-travel/" target="_blank"
+                          className="portfolio__link-wrapper">
+                        <h3 className="portfolio__website">Адаптивный сайт</h3>
+                        <div className="portfolio__img-wrapper">
+                            <img className="portfolio__img" src={arrow} alt="белая стрелка"/>
+                        </div>
+                    </Link></li>
+                <li>
+                    <Link to="https://zvereva-oksana.github.io/react-mesto-auth/" target="_blank"
+                          className="portfolio__link-wrapper portfolio__link-wrapper_last">
+                        <h3 className="portfolio__website">Одностраничное приложение</h3>
+                        <div className="portfolio__img-wrapper">
+                            <img className="portfolio__img" src={arrow} alt="белая стрелка"/>
+                        </div>
+                    </Link>
                 </li>
             </ul>
         </section>
-    );
+    )
 }
 
 export default Portfolio;

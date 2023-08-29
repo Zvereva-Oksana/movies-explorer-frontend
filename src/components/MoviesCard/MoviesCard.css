@@ -31,7 +31,7 @@
 
 }
 
-@media screen and (max-width: 840px) and (min-width: 400px) {
+@media screen and (max-width: 920px) and (min-width: 400px) {
     .movie__thumbnail {
         width: 339px;
         height: 190px;
@@ -53,7 +53,7 @@
     margin: -4px 0;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 920px) {
     .movie__wrapper {
         padding-right: 14px;
         padding-left: 14px;
@@ -73,7 +73,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 840px) and (min-width: 350px) {
+@media screen and (max-width: 920px) and (min-width: 350px) {
     .movie__name {
         max-width: 260px;
         padding-top: 14px;
@@ -130,7 +130,7 @@
     line-height: normal;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 920px) {
     .movie__duration {
         padding-left: 14px;
     }
