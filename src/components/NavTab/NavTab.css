@@ -1,0 +1,35 @@
+.navigat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+    margin: 0;
+    background-color: #272727;
+    height: 66px;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+@media screen and (max-width: 350px) {
+    .navigat {
+        column-gap: 24px;
+    }
+}
+
+.navigat__link {
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.navigat__link:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 350px) {
+    .navigat__link {
+        font-size: 11px;
+    }
+}
