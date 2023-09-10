@@ -12,9 +12,6 @@
 Применена методология БЭМ.
 
 ## Ссылки на проект
+Ссылка на пул реквест: https://github.com/Zvereva-Oksana/movies-explorer-frontend/pull/2
 
-IP 158.160.60.181
-
-Frontend https://movies-explorer.zvereva.nomoredomainsicu.ru
-
-Backend https://api.movies.zvereva.nomoredomainsicu.ru
+Ссылка на задеплоенный на сервере проект: https://movies-explorer.zvereva.nomoredomainsicu.ru
