@@ -32,7 +32,6 @@
     display: flex;
     flex-direction: column;
     width: 410px;
-    row-gap: 17px;
 }
 
 @media screen and (max-width: 800px) and (min-width: 450px) {
@@ -46,6 +45,16 @@
         width: 260px;
         padding-top: 80px;
     }
+}
+
+.profile__wrapper-error {
+    min-height: 17px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile__wrapper-error_left {
+    justify-content: flex-start;
 }
 
 .profile__wrapper{
@@ -81,7 +90,7 @@
 }
 
 .profile__wrapper-navigation {
-    height: 268px;
+    height: 251px;
     display: flex;
     flex-direction: column;
     row-gap: 16px;
@@ -90,13 +99,13 @@
 
 @media screen and (max-width: 800px) and (min-width: 450px) {
     .profile__wrapper-navigation {
-        height: 258px;
+        height: 241px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .profile__wrapper-navigation {
-        height: 425px;
+        height: 408px;
     }
 }
 
@@ -111,12 +120,18 @@
     text-decoration: none;
     border: none;
     cursor: pointer;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 450px) {
     .profile__button-edit {
         font-size: 12px;
     }
+}
+
+.profile__button-edit:disabled {
+    color: #C2C2C2;
+    cursor: auto;
 }
 
 .profile__link-exit {
@@ -126,7 +141,9 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    text-decoration: none;
+    background-color: #202020;
+    border: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 450px) {
@@ -149,31 +166,6 @@
     border: 1px solid #3456F3;
 }
 
-.profile__button-save {
-    width: 410px;
-    height: 45px;
-    border-radius: 3px;
-    background-color: #3456F3;
-    color: #FFF;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    border: none;
-}
-
-@media screen and (max-width: 450px) {
-    .profile__button-save {
-        width: 260px;
-    }
-}
-
-.profile__button-save_disabled {
-    background-color: #F8F8F8;
-    color: #C2C2C2;
-}
-
 .profile__error-wrapper {
     display: flex;
     flex-direction: column;
@@ -183,12 +175,12 @@
 .profile__error-text {
     max-width: 410px;
     color: #FF004C;
-    text-align: center;
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     padding-bottom: 4px;
+    text-align: center;
 }
 
 @media screen and (max-width: 450px) {

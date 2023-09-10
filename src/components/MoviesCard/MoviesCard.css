@@ -10,6 +10,14 @@
     cursor: pointer;
 }
 
+.movie_hover .movie__button-delete {
+    opacity: 0;
+}
+
+.movie_hover:hover .movie__button-delete {
+    opacity: 1;
+}
+
 @media screen and (max-width: 920px) and (min-width: 400px) {
     .movie {
         width: 339px;
@@ -71,6 +79,8 @@
     max-width: 290px;
     text-overflow: ellipsis;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 920px) and (min-width: 350px) {
@@ -119,6 +129,7 @@
     box-sizing: border-box;
     background-color: #222;
     padding: 0;
+    z-index: 10;
 }
 
 .movie__duration {

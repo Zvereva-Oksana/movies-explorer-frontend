@@ -36,4 +36,11 @@
     opacity: 0.7;
 }
 
+.header__logo_no-button {
+    cursor: auto;
+}
+
+.header__logo_no-button.header__logo:not([disabled]):hover{
+    opacity: 1;
+}
 
