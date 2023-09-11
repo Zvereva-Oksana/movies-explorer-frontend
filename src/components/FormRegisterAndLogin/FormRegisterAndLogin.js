@@ -26,7 +26,16 @@ function FormRegisterAndLogin({
   return (
     <section className="registration">
       <div className="registration__wrapper">
-        <img src={logo} className="header__logo header__logo_no-button" alt="Логотип в виде зеленого кольца" />
+        <Link
+          to="/"
+          className="header__link"
+        >
+          <img
+            src={logo}
+            className="header__logo"
+            alt="Логотип в виде зеленого квадрата с белым кругом по середине"
+          />
+        </Link>
         <h2 className="registration__heading">{header}</h2>
         <form onSubmit={onSubmitForm} name={nameForm} className="form" autoComplete="off">
           <fieldset className="form__input-container">

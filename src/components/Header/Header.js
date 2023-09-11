@@ -12,7 +12,11 @@ function Header({ isLoggedIn, isMobile }) {
     <header className={`header ${
       location.pathname === '/' ? 'header_color' : ''}`}
     >
-      <Link to="/">
+      <Link
+        to="/"
+        className={`header__link ${
+          location.pathname === '/' ? 'header__link_disabled' : ''}`}
+      >
         <img
           src={logo}
           className="header__logo"
