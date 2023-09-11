@@ -10,6 +10,12 @@ function Login({
   navigate,
   tokenCheck,
 }) {
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) {
+      navigate('/');
+    }
+  }, []);
+
   const {
     values, handleChange, errors, isValid, resetForm,
   } = useFormWithValidation();
@@ -30,7 +36,6 @@ function Login({
       localStorage.setItem('jwt', jwt);
       navigate('/movies');
       tokenCheck();
-      setErrorLogin('');
       resetForm();
     }).catch(({ message }) => {
       setErrorLogin(message);

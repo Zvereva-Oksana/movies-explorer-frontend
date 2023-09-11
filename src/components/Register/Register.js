@@ -6,6 +6,12 @@ import api from '../../utils/MainApi';
 function Register({
   errorRegister, setErrorRegister, onLogin, tokenCheck, navigate,
 }) {
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) {
+      navigate('/');
+    }
+  }, []);
+
   const {
     values, handleChange, errors, isValid, resetForm,
   } = useFormWithValidation();
