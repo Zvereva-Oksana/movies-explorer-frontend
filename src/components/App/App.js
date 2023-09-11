@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Routes, Route, useNavigate, useLocation,
+  Routes, Route, useNavigate, useLocation, Navigate,
 } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
@@ -236,7 +236,8 @@ function App() {
               />
                       )}
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
         {permittedRoutesFooter.includes(location.pathname) && <Footer />}
       </div>
