@@ -38,6 +38,7 @@ function Profile({
     <section className="profile">
       <h2 className="profile__header">
         Привет,
+        {' '}
         {currentUser.name}
         !
       </h2>
