@@ -219,6 +219,8 @@ function App() {
                 errorRegister={errorRegister}
                 setErrorRegister={setErrorRegister}
                 navigate={navigate}
+                onLogin={() => setIsLoggedIn(true)}
+                tokenCheck={tokenCheck}
               />
                       )}
           />

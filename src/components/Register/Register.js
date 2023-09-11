@@ -4,7 +4,7 @@ import useFormWithValidation from '../../utils/validation';
 import api from '../../utils/MainApi';
 
 function Register({
-  errorRegister, setErrorRegister, navigate,
+  errorRegister, setErrorRegister, onLogin, tokenCheck, navigate,
 }) {
   const {
     values, handleChange, errors, isValid, resetForm,
@@ -16,15 +16,25 @@ function Register({
     }
   }, [values]);
 
-  const handleSubmitRegisterForm = (event) => {
+  const handleSubmitRegisterForm = async (event) => {
     event.preventDefault();
-    api.register(values)
-      .then(() => {
+    try {
+      const { name, email } = await api.register(values);
+      if (name && email) {
         resetForm();
-        navigate('/signin');
-      }).catch((err) => {
-        setErrorRegister(err.message);
-      });
+        api.authorize({ email, password: values.password }).then(({ jwt }) => {
+          if (!jwt) {
+            return;
+          }
+          onLogin();
+          localStorage.setItem('jwt', jwt);
+          navigate('/movies');
+          tokenCheck();
+        });
+      }
+    } catch (err) {
+      setErrorRegister(err.message);
+    }
   };
 
   useEffect(() => {
