@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { errorMovieLoading, errorSearchMovie } from '../../utils/constant';
 import UseWindowWidth from '../../utils/useWindowWidth';
 import getAllExistMovies from '../../utils/MoviesApi';
+import {
+  COUNT_CARDS_ON_PAGE,
+  DURATION_OF_SHORT_FILMS,
+  ERROR_MOVIES_LOADING,
+  ERROR_SEARCH_MOVIE,
+} from '../../utils/constant';
 
 function Movies({
   myMovie, onAddCardMovie, onDeleteCard,
@@ -26,7 +31,8 @@ function Movies({
       .includes(movieSearchInput.toLowerCase())
             || card.nameEN.toLowerCase().includes(movieSearchInput.toLowerCase()));
     if (isToggleToShortFisms) {
-      const movieSearcShortFilm = movieSearc.filter((card) => card.duration <= 40);
+      const movieSearcShortFilm = movieSearc
+        .filter((card) => card.duration <= DURATION_OF_SHORT_FILMS);
       setCardsForRender(movieSearcShortFilm);
     } else {
       setCardsForRender(movieSearc);
@@ -54,7 +60,7 @@ function Movies({
           setMovies(dataMovies);
         },
       ).catch(() => {
-        setErrorLoading(errorMovieLoading);
+        setErrorLoading(ERROR_MOVIES_LOADING);
       }).finally(() => {
         setIsLoading(false);
         setClickSearchButton(!isClickSearchButton);
@@ -68,7 +74,8 @@ function Movies({
   useEffect(() => {
     if (movieSearchInput && movies.length === 0) {
       if (isToggleToShortFisms) {
-        const movieSearcShortFilm = moviesForLocalStorage.filter((card) => card.duration <= 40);
+        const movieSearcShortFilm = moviesForLocalStorage
+          .filter((card) => card.duration <= DURATION_OF_SHORT_FILMS);
         setCardsForRender(movieSearcShortFilm);
       } else {
         setCardsForRender(moviesForLocalStorage);
@@ -94,7 +101,7 @@ function Movies({
       setMoviesForLocalStorage(movies);
       setCardsForRender(movies);
     } else if (movies && movieSearchInput && toggleToShortFisms) {
-      const movieSearcShortFilm = movies.filter((card) => card.duration <= 40);
+      const movieSearcShortFilm = movies.filter((card) => card.duration <= DURATION_OF_SHORT_FILMS);
       setMoviesForLocalStorage(movies);
       setCardsForRender(movieSearcShortFilm);
     }
@@ -112,15 +119,15 @@ function Movies({
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     if (!movieSearchInput) {
-      return setErrorSearch(errorSearchMovie);
+      return setErrorSearch(ERROR_SEARCH_MOVIE);
     }
     setClickSearchButton(!isClickSearchButton);
     if (width >= 1270) {
-      return setCountCardsPerPage(12);
+      return setCountCardsPerPage(COUNT_CARDS_ON_PAGE.DESKTOP);
     } else if (width >= 768 && width < 1270) {
-      return setCountCardsPerPage(8);
+      return setCountCardsPerPage(COUNT_CARDS_ON_PAGE.TABLET);
     } else {
-      return setCountCardsPerPage(5);
+      return setCountCardsPerPage(COUNT_CARDS_ON_PAGE.MOBILE);
     }
   };
   return (

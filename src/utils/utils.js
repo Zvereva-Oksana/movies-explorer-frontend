@@ -6,18 +6,6 @@ export const converterMovieForSave = (obj, owner) => ({
   movieId: obj.id,
 });
 
-export const setCountCardsByWidth = (width) => {
-  let countCard;
-  if (width >= 1270) {
-    countCard = 12;
-  } else if (width >= 768 && width < 1270) {
-    countCard = 8;
-  } else {
-    countCard = 5;
-  }
-  return countCard;
-};
-
 export const normalizeCardAfterSave = (arr, obj) => {
   const index = arr.findIndex((elem) => elem.id === obj.id);
   arr[index] = { ...arr[index], isSave: true, _id: obj._id };

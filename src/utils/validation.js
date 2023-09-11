@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { regexEmail, regexName } from './constant';
+import { REGEX_EMAIL, REGEX_NAME } from './constant';
 
 const useFormWithValidation = () => {
   const [values, setValues] = useState({});
@@ -7,7 +7,7 @@ const useFormWithValidation = () => {
   const [isValid, setIsValid] = useState(false);
 
   const validationName = useCallback((value) => {
-    if (!regexName.test(value)) {
+    if (!REGEX_NAME.test(value)) {
       return 'Имя должно содержать только латиницу, кириллицу, пробел или дефис';
     }
     if (value.length <= 1) {
@@ -16,7 +16,7 @@ const useFormWithValidation = () => {
     return '';
   }, [values]);
 
-  const validationEmail = useCallback((value) => regexEmail.test(value), [values]);
+  const validationEmail = useCallback((value) => REGEX_EMAIL.test(value), [values]);
 
   const handleChange = useCallback((event) => {
     const { target } = event;

@@ -25,6 +25,7 @@ import {
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import api from '../../utils/MainApi';
+import { COUNT_ADDITIONAL_CARDS, COUNT_CARDS_ON_PAGE } from '../../utils/constant';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -98,14 +99,14 @@ function App() {
     let countCardsPerPage;
     let countCardsWithAdditionalLoading;
     if (width >= 1270) {
-      countCardsPerPage = 12;
-      countCardsWithAdditionalLoading = 3;
+      countCardsPerPage = COUNT_CARDS_ON_PAGE.DESKTOP;
+      countCardsWithAdditionalLoading = COUNT_ADDITIONAL_CARDS.DESKTOP;
     } else if (width >= 768 && width < 1270) {
-      countCardsPerPage = 8;
-      countCardsWithAdditionalLoading = 2;
+      countCardsPerPage = COUNT_CARDS_ON_PAGE.TABLET;
+      countCardsWithAdditionalLoading = COUNT_ADDITIONAL_CARDS.TABLET;
     } else {
-      countCardsPerPage = 5;
-      countCardsWithAdditionalLoading = 2;
+      countCardsPerPage = COUNT_CARDS_ON_PAGE.MOBILE;
+      countCardsWithAdditionalLoading = COUNT_ADDITIONAL_CARDS.MOBILE;
     }
     if (timer) {
       clearTimeout(timer);

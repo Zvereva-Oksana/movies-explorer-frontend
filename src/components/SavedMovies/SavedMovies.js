@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
-import { errorSearchMovie } from '../../utils/constant';
+import { DURATION_OF_SHORT_FILMS, ERROR_SEARCH_MOVIE } from '../../utils/constant';
 
 function SavedMovies({ myMovie, onDeleteCard }) {
   const [movieSearchInput, setMovieSearchInput] = useState('');
@@ -21,7 +21,7 @@ function SavedMovies({ myMovie, onDeleteCard }) {
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     if (!movieSearchInput) {
-      return setErrorSearch(errorSearchMovie);
+      return setErrorSearch(ERROR_SEARCH_MOVIE);
     }
     return setClickSearchButton(!isClickSearchButton);
   };
@@ -29,7 +29,8 @@ function SavedMovies({ myMovie, onDeleteCard }) {
   useEffect(() => {
     if (myMovie.length > 0 && movieSearchInput.length === 0) {
       setCardsForRender(myMovie);
-      const movieSearcShortFilm = myMovie.filter((card) => card.duration <= 40);
+      const movieSearcShortFilm = myMovie
+        .filter((card) => card.duration <= DURATION_OF_SHORT_FILMS);
       isToggleToShortMyFisms ? setCardsForRender(movieSearcShortFilm)
         : setCardsForRender(myMovie);
     } else if (movieSearchInput && myMovie.length > 0) {
@@ -37,7 +38,8 @@ function SavedMovies({ myMovie, onDeleteCard }) {
         .includes(movieSearchInput.toLowerCase())
           || card.nameEN.toLowerCase().includes(movieSearchInput.toLowerCase()));
       setCardsForRender(movieSearc);
-      const movieSearcShortFilm = movieSearc.filter((card) => card.duration <= 40);
+      const movieSearcShortFilm = movieSearc
+        .filter((card) => card.duration <= DURATION_OF_SHORT_FILMS);
       isToggleToShortMyFisms ? setCardsForRender(movieSearcShortFilm)
         : setCardsForRender(movieSearc);
     } else if (myMovie.length === 0) {
