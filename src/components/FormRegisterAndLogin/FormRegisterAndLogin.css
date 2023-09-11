@@ -56,7 +56,6 @@
 
 .form__input-container {
     display: flex;
-    row-gap: 17px;
     flex-direction: column;
     padding: 0;
     border: none;
@@ -114,10 +113,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    align-self: flex-end;
 }
 
 .form__err_add {
     display: block;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .form__button {
@@ -143,6 +146,11 @@
 .form__button:hover {
     opacity: 0.8;
     cursor: pointer;
+}
+
+.form__button:disabled {
+    opacity: 0.8;
+    cursor: auto;
 }
 
 .registration__footer {

@@ -1,55 +1,65 @@
-import React, {useEffect, useState} from 'react';
-import movies from "./../../utils/mock-films"
-import MoviesCard from "../MoviesCard/MoviesCard";
-import './MoviesCardList.css'
-import UseWindowWidth from "../../utils/useWindowWidth";
-import {useLocation} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import './MoviesCardList.css';
+import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({onMovieClick}) => {
-    const {width} = UseWindowWidth();
-    const [countCardsPerPage, setCountCardsPerPage] = useState(null);
-    const [cardsForRender, setCardsForRender] = useState([]);
-    const [numberPage, setNumberPage] = useState(1);
-    let location = useLocation();
+function MoviesCardList({
+  onAddCardMovie,
+  cardsForRender,
+  isLoading,
+  countCardsPerPage,
+  setCountCardsPerPage,
+  onDeleteCard,
+  errorLoading,
+  countCardsWithAdditionalLoading,
+  moviesForLocalStorage,
+}) {
+  const [cardsForRenderOnPage, setCardsForRenderOnPage] = useState([]);
+  const location = useLocation();
 
-    useEffect(() => {
-        if (width >= 1270) {
-            setCountCardsPerPage(12)
-        } else if (width >= 768 && width < 1270) {
-            setCountCardsPerPage(8)
-        } else {
-            setCountCardsPerPage(5)
-        }
-    }, [width])
-
-    useEffect(() => {
-        const cardsForRenderOnPage = movies.slice(0, numberPage * countCardsPerPage);
-        setCardsForRender(cardsForRenderOnPage);
-    }, [numberPage, countCardsPerPage])
-
-    return (
-        <section className="cards-list">
-            <div className="cards-list__wrapper" aria-label="Коллекция карточек с фильмами">
-                {location.pathname === '/movies' && cardsForRender.map((movie) => (
-                    <MoviesCard
-                        key={movie['_id']}
-                        movie={movie}
-                        onMovieClick={onMovieClick}
-                    />
-                ))}
-                {location.pathname === '/saved-movies' && cardsForRender.map((movie) => (
-                    <MoviesCard
-                        key={movie['_id']}
-                        movie={movie}
-                        onMovieClick={onMovieClick}
-                    />
-                ))}
-            </div>
-            {cardsForRender.length !== movies.length &&
-            <button onClick={() => setNumberPage(numberPage + 1)} type="button"
-                    className="cards-list__button">Ещё</button>}
-        </section>
-    );
+  useEffect(() => {
+    if (location.pathname === '/saved-movies') {
+      setCardsForRenderOnPage(cardsForRender);
+    } else {
+      const cards = cardsForRender.slice(0, countCardsPerPage);
+      setCardsForRenderOnPage(cards);
+    }
+  }, [cardsForRender, countCardsPerPage]);
+  return (
+    <section className="cards-list">
+      {isLoading && cardsForRender.length === 0 && <Preloader />}
+      {errorLoading?.length > 0 && !isLoading && <p>{errorLoading}</p>}
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {!isLoading && cardsForRender.length === 0
+        ? (localStorage.getItem('movies') === null ? '' : <p className="cards-list__text">Ничего не найдено</p>)
+        : (
+          <div className="cards-list__wrapper" aria-label="Коллекция карточек с фильмами">
+            {cardsForRenderOnPage.map((movie) => (
+              <MoviesCard
+                key={movie.id}
+                movie={movie}
+                onAddCardMovie={onAddCardMovie}
+                onDeleteCard={onDeleteCard}
+                moviesForLocalStorage={moviesForLocalStorage}
+              />
+            ))}
+          </div>
+        )}
+      {cardsForRender.length > cardsForRenderOnPage.length
+            && (
+            <button
+              onClick={() => {
+                setCountCardsPerPage(countCardsPerPage + countCardsWithAdditionalLoading);
+              }}
+              type="button"
+              className="cards-list__button"
+            >
+              Ещё
+            </button>
+            )}
+    </section>
+  );
 }
 
 export default MoviesCardList;

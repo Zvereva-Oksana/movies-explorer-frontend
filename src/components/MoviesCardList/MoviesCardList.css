@@ -61,3 +61,7 @@
     cursor: pointer;
 }
 
+.cards-list__text {
+    text-align: center;
+}
+
